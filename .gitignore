@@ -1,0 +1,9 @@
+# Ignore the virtual environment directory
+.DS_Store
+bin/
+include/
+share/
+pyvenv.cfg
+lib/
+index.html
+app/exp.py
