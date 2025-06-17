@@ -8,6 +8,22 @@ Bi-directional encoder representations from transformers, here are the things I 
 
 - [x] Implement the position-wise feed-forward network. 
     - Two Linear transformations with GELU activation in between
-- [ ] Implement layer normalization and residual connections
-- [ ] Combining these into a single encoder layer
-- [ ] Stacking multiple encoder layers to form the BERT encoder
+
+Math behind the `TransformerEncoderLayer` :
+    - Attention sub-layer : $ x' = LayerNorm(x + Dropout(Attention(x))) $
+
+- [x] Implement layer normalization and residual connections
+    - stack of `num_hidden_layers` encoder layers
+- [x] Combining these into a single encoder layer
+- [x] Stacking multiple encoder layers to form the BERT encoder
+
+
+## Here's what I am doing next 
+
+Extracting the attention_probs from MultiHeadAttention module and create a heatmap to show how tokens attend to each other
+
+My Approach
+
+- Take the first sequence in the batch and then plot the heatmap
+
+
