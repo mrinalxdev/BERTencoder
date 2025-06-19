@@ -46,6 +46,22 @@ class FeedForward(nn.Module):
 
     def forward(self, x):
         return self.linear2(self.relu(self.linear1(x)))
+    
+
+class BERTClassifier(nn.Module):
+    def __init__(self, vocab_size, d_model, num_heads, d_ff, num_layers, max_seq_len, num_classes, dropout=0.1):
+        super(BERTClassifier, self).__init__()
+        self.encoder = BERTEncoder(vocab_size, d_model, num_heads, d_ff, num_layers, max_seq_len, dropout)
+
+        self.classifier = nn.Linear(d_model, num_classes)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, tokens, mask=None):
+        output, attention_probs_all = self.encoder(tokens, mask)
+        cls_output = output[:, 0, :] # this is the cls token embedding
+        cls_output = self.dropout(cls_output)
+        logits = self.classifier(cls_output)
+        return logits, attention_probs_all
 
 class TransformerEncoderLayer(nn.Module):
     def __init__(self, d_model, num_heads, d_ff, dropout=0.1):

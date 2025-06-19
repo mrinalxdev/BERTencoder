@@ -18,7 +18,7 @@ Math behind the `TransformerEncoderLayer` :
 - [x] Stacking multiple encoder layers to form the BERT encoder
 
 
-## Here's what I am doing next 
+## Here's what I am doing next [Visualizing Attention Heads]
 
 Extracting the attention_probs from MultiHeadAttention module and create a heatmap to show how tokens attend to each other
 
@@ -26,4 +26,17 @@ My Approach
 
 - Take the first sequence in the batch and then plot the heatmap
 
+How is visualization part is working ?
 
+
+## Experimenting next with text classification
+
+Approach : 
+
+1. Classification Head (BERTClassifier) : the `BERTClassifier` class wrap the `BERTEncoder` and adds a linear layer to predict class probabilities 
+
+How are we doing it ?? 
+
+- Extract the CLS token's embedding `(output[:, 0, :])` from the encoder's output, as BERT uses this for classification tasks.
+
+- Applies dropout for regularization. 
