@@ -40,3 +40,14 @@ How are we doing it ??
 - Extract the CLS token's embedding `(output[:, 0, :])` from the encoder's output, as BERT uses this for classification tasks.
 
 - Applies dropout for regularization. 
+
+2. Tokenizer integration : using `transformers.BertTokenizer` from hugging face, pre-trained on `bert-base-uncased`. 
+
+
+## Experimenting with GPTDecoder
+
+- Convert this whole into a hybrid model 
+
+Maths here
+
+Bert encoder : input token ID $x = [x_1, ... , x_n]$, n is the sequence length
