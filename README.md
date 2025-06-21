@@ -51,3 +51,8 @@ How are we doing it ??
 Maths here
 
 Bert encoder : input token ID $x = [x_1, ... , x_n]$, n is the sequence length
+
+
+$$
+\frac{a}{x^2} = sigmoid
+$$

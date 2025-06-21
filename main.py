@@ -19,9 +19,7 @@ class MultiHeadAttention(nn.Module):
 
     def scaled_dot_product_attention(self, Q, K, V, mask=None):
         batch_size = Q.size(0)
-        # Q, K, V are (batch_size, num_heads, seq_len, d_k)
         attention_scores = torch.matmul(Q, K.transpose(-2, -1)) / np.sqrt(self.d_k)
-        # attention_scores: (batch_size, num_heads, seq_len_Q, seq_len_K)
 
         if mask is not None:
             if mask.dim() == 2: 
